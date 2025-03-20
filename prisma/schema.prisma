@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+model user {
+  id          String       @id @db.Uuid
+  name        String?
+  email       String       @unique
+  friends     Friendship[] @relation("FriendshipUser")
+  friendOf    Friendship[] @relation("FriendshipFriend")
+  transactions Transaction[]
+  splitTransactions Transaction[] @relation("SplitTransaction")
+}
+
+model Friendship {
+  id        String @id @default(uuid())
+  userId    String @db.Uuid
+  friendId  String @db.Uuid
+  user      user   @relation("FriendshipUser", fields: [userId], references: [id])
+  friend    user   @relation("FriendshipFriend", fields: [friendId], references: [id])
+}
+
+model Transaction {
+  id          String   @id @default(uuid())
+  amount      Float
+  description String
+  userId      String   @db.Uuid
+  user        user     @relation(fields: [userId], references: [id])
+  splitWith   user[]   @relation("SplitTransaction")
+}

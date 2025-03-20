@@ -14,7 +14,7 @@ Ensure you have the following installed:
  the repository and install dependencies:
 
 ```bash
-git  <repo_url>
+git clone  <repo_url>
 cd splitwise-backend
 npm install
 ```

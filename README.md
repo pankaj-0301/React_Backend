@@ -80,18 +80,7 @@ Content-Type: application/json
 - Requires authentication
 - Associates the given transaction with the specified friends
 
-## Deployment
-The easiest way to deploy this backend is using [Vercel](https://vercel.com/):
 
-```bash
-npm run build
-npm start
-```
-
-## Learn More
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Prisma Documentation](https://www.prisma.io/docs/)
-- [Supabase Documentation](https://supabase.com/docs)
 
 ---
 This documentation provides a quick start guide for running and understanding the backend for the Splitwise-like app.

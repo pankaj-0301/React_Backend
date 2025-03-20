@@ -82,7 +82,5 @@ Content-Type: application/json
 
 
 
----
-This documentation provides a quick start guide for running and understanding the backend for the Splitwise-like app.
-```
 
+This documentation provides a quick start guide for running and understanding the backend for the Splitwise-like app.

@@ -11,7 +11,7 @@ Ensure you have the following installed:
 - [PostgreSQL](https://www.postgresql.org/) or a Supabase database
 
 ### Installation
- the repository and install dependencies:
+Clone the repository and install dependencies:
 
 ```bash
 git clone  <repo_url>

@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+```markdown
+# Splitwise-Clone Backend (Next.js + Prisma + PostgreSQL)
+
+This is a backend service built using [Next.js](https://nextjs.org/) API routes, [Prisma](https://www.prisma.io/), and [PostgreSQL](https://www.postgresql.org/) (via Supabase). It provides APIs for managing users, transactions, friendships, and splitting expenses among friends.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/)
+- [PostgreSQL](https://www.postgresql.org/) or a Supabase database
+
+### Installation
+Clone the repository and install dependencies:
+
+```bash
+git clone <repo_url>
+cd splitwise-backend
+npm install
+```
+
+### Environment Setup
+Create a `.env` file in the root directory and add the following variables:
+
+```bash
+DATABASE_URL=<your_postgres_connection_url>
+DIRECT_URL=<your_postgres_direct_url>
+EXPO_PUBLIC_SUPABASE_URL=<your_supabase_url>
+EXPO_PUBLIC_SUPABASE_ANON_KEY=<your_supabase_anon_key>
+```
+
+### Database Setup
+Run the following Prisma commands to set up the database:
+
+```bash
+npx prisma migrate dev --name init
+npx prisma generate
+```
+
+Seed the database with sample data:
+
+```bash
+npx prisma db seed
+```
+
+### Running the Server
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to interact with the API.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## API Endpoints
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Fetch User Transactions
+```http
+GET /api/transactions
+```
+- Requires authentication
+- Returns a list of transactions for the authenticated user
+
+### Fetch User Friends
+```http
+GET /api/friends?userId=<user_id>
+```
+- Requires authentication
+- Returns a list of friends for the requested user
+
+### Split a Transaction
+```http
+POST /api/split
+Content-Type: application/json
+{
+  "transactionId": "<id>",
+  "friendIds": ["<id1>", "<id2>"]
+}
+```
+- Requires authentication
+- Associates the given transaction with the specified friends
+
+## Deployment
+The easiest way to deploy this backend is using [Vercel](https://vercel.com/):
+
+```bash
+npm run build
+npm start
+```
 
 ## Learn More
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Prisma Documentation](https://www.prisma.io/docs/)
+- [Supabase Documentation](https://supabase.com/docs)
 
-To learn more about Next.js, take a look at the following resources:
+---
+This documentation provides a quick start guide for running and understanding the backend for the Splitwise-like app.
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,5 +1,5 @@
 ```markdown
-# Splitwise-Clone Backend (Next.js + Prisma + PostgreSQL)
+# Splitwise- Backend (Next.js + Prisma + PostgreSQL)
 
 This is a backend service built using [Next.js](https://nextjs.org/) API routes, [Prisma](https://www.prisma.io/), and [PostgreSQL](https://www.postgresql.org/) (via Supabase). It provides APIs for managing users, transactions, friendships, and splitting expenses among friends.
 
@@ -11,10 +11,10 @@ Ensure you have the following installed:
 - [PostgreSQL](https://www.postgresql.org/) or a Supabase database
 
 ### Installation
-Clone the repository and install dependencies:
+ the repository and install dependencies:
 
 ```bash
-git clone <repo_url>
+git  <repo_url>
 cd splitwise-backend
 npm install
 ```
